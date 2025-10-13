@@ -124,7 +124,7 @@ public class YDBConnect {
 
 export function getNodeJSSnippetCode({database, endpoint}: SnippetParams) {
     return `// Requires Node.js 20.19 or higher (also works with Deno/Bun)
-// Documentation: https://ydbjs.org
+// Documentation: https://ydb.js.org
 // Source code: https://github.com/ydb-platform/ydb-js-sdk
 // Examples: https://github.com/ydb-platform/ydb-js-examples
 import {Driver} from '@ydbjs/core';
