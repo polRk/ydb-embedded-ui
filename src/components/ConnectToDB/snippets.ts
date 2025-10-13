@@ -124,8 +124,12 @@ public class YDBConnect {
 
 export function getNodeJSSnippetCode({database, endpoint}: SnippetParams) {
     return `// Requires Node.js 20.19 or higher (also works with Deno/Bun)
+// Documentation: https://ydbjs.org
+// Source code: https://github.com/ydb-platform/ydb-js-sdk
+// Examples: https://github.com/ydb-platform/ydb-js-examples
 import {Driver} from '@ydbjs/core';
 import {query} from '@ydbjs/query';
+import type {ResultSet} from '@ydbjs/query';
 
 const connectionString = 'grpc://${endpoint ?? '<endpoint>'}${database ?? '/<database>'}';
 
@@ -135,8 +139,8 @@ async function run() {
   await driver.ready();
   const sql = query(driver);
   
-  const resultSets = await sql\`SELECT 'Hello, world!';\`;
-  console.log(resultSets[0].rows[0].value);
+  const resultSets: ResultSet[] = await sql\`SELECT 'Hello, world!' AS message;\`;
+  console.log(resultSets[0].rows[0].message);
 
   await driver.close();
 }
